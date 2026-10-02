@@ -1,0 +1,10 @@
+Options -Indexes
+DirectoryIndex index.php home.php
+<FilesMatch "^(\.env|\.env\.example|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^(\.git|\.agents|\.codex|\.aws)(/|$) - [F,L]
+RewriteRule ^(includes|database|docs)/ - [F,L]
+RewriteRule ^storage/(?!uploads/) - [F,L]
+RewriteRule ^storage/uploads/.*\.(php|phtml|phar|php[0-9]*)$ - [F,L,NC]
